@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SmartButler</string>
+    <string name="text_setting">Setting</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+</resources>

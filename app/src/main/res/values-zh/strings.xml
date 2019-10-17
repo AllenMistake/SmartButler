@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">智能管家</string>
+    <string name="text_setting">设置</string>
+    <string name="password">密码</string>
+    <string name="username">用户名</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="text_age">年龄</string>
+    <string name="password_again">确认密码</string>
+    <string name="text_girl">女</string>
+    <string name="text_boy">男</string>
+    <string name="desc">描述</string>
+    <string name="text_email">邮箱</string>
+    <string name="text_register_remind">注册成功需要邮箱验证，否则无法登录！</string>
+    <string name="text_now_password">旧密码</string>
+    <string name="text_new_password">新密码</string>
+    <string name="text_editor_password">修改密码</string>
+    <string name="text_password_again">再次输入密码</string>
+    <string name="text_forget_password">忘记密码</string>
+    <string name="text_now_login">正在登录</string>
+    <string name="login_out">退出登录</string>
+    <string name="text_courier_company">快递公司编号</string>
+    <string name="text_courier_number">单号</string>
+    <string name="text_tost_empty">输入框不能为空</string>
+</resources>
