@@ -22,4 +22,5 @@
     <string name="text_courier_company">快递公司编号</string>
     <string name="text_courier_number">单号</string>
     <string name="text_tost_empty">输入框不能为空</string>
+    <string name="text_more_length">输入长度超出限制</string>
 </resources>

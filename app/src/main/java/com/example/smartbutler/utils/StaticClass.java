@@ -24,4 +24,6 @@ public class StaticClass {
     // 快递 Key
     public static final String COURIER_KEY = "9280cb0205932164ae2314cee9bce437";
 
+    // 图灵机器人
+    public static final String CHAT_LIST_KEY = "6e4bd795e7774a9ab8cddf6a9e57349e";
 }
