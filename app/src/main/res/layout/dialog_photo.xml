@@ -33,6 +33,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg_red"
         android:text="取消"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>
