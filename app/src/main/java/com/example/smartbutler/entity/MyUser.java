@@ -9,11 +9,21 @@ package com.example.smartbutler.entity;
  */
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 
 public class MyUser extends BmobUser {
     private int age;
     private boolean sex;
     private String desc;
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public int getAge() {
         return age;

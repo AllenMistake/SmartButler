@@ -5,7 +5,7 @@ package com.example.smartbutler.fragment;
  * 文件名:  UserFragment
  * 创建者:  AllenMistake
  * 创建时间: 2019/10/11 21:52
- * 描述:    TODO
+ * 描述:    用户修改信息
  */
 
 import android.Manifest;
@@ -36,7 +36,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
@@ -46,22 +45,13 @@ import com.example.smartbutler.entity.MyUser;
 import com.example.smartbutler.ui.CourierActivity;
 import com.example.smartbutler.ui.LoginActivity;
 import com.example.smartbutler.utils.L;
-import com.example.smartbutler.utils.ShareUtils;
 import com.example.smartbutler.view.CustomDialog;
-import com.yalantis.ucrop.UCrop;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
-
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.app.Activity.RESULT_OK;
 import static com.example.smartbutler.utils.UtilsTools.getImageToShare;
 import static com.example.smartbutler.utils.UtilsTools.putImageToShare;
 
@@ -147,6 +137,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         et_sex.setText(user.isSex() ? "男" : "女");
         et_age.setText(user.getAge() + "");
         et_desc.setText(user.getDesc());
+        mFile = user.getImagePath();
+        Bitmap downloadUserAvater =BitmapFactory.decodeFile(mFile);
+        profile_image.setImageBitmap(downloadUserAvater);
 
         // 获取权限
         int permission = ActivityCompat.checkSelfPermission(getActivity(),
@@ -261,12 +254,6 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     // 跳转相册
     private void toCamera() {
 
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-////        intent.putExtra(MediaStore.EXTRA_OUTPUT,
-////                Uri.fromFile(new File(Environment.getExternalStorageDirectory(), PHOTO_IMAGE_FILE_NAME)));
-//        Uri contentUri = FileProvider.getUriForFile(getActivity(), getActivity().getPackageName()+".provider", tempFile);
-//        startActivityForResult(intent, CAMERA_REQUEST_CODE);
-//        dialog.dismiss();
         //用于保存调用相机拍照后所生成的文件
         tempFile = new File(Environment.getExternalStorageDirectory().getPath(), System.currentTimeMillis() + ".png");
         //跳转到调用系统相机
@@ -313,48 +300,32 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                         // 让刚才选择裁剪得到的图片显示在界面上
                         Bitmap photo =BitmapFactory.decodeFile(mFile);
                         profile_image.setImageBitmap(photo);
+                        uploadImagePath(mFile);
                     } else {
                         Log.e("data","data为空");
                     }
-
-//                    L.d("获取data中:" + data.toString());
-//
-//                    // 有可能点击舍弃
-//                    if (data == null) {
-//                        Toast.makeText(getActivity(), "获取图片失败", Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        L.d("获取图片成功！");
-//                        // 拿到图片设置
-//                        setImageToView(data);
-//                        // 既然已经设置图片，原先应该删除
-//                        if (tempFile != null) {
-//                            tempFile.delete();
-//                        }
-//                    }
                     break;
 
             }
-
-//            if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
-//                L.d("获取data中:" + data.toString());
-//                // 有可能点击舍弃
-//                if (data != null) {
-//                    L.d("获取图片成功");
-//                    // 拿到图片设置
-//                    final Uri resultUri = UCrop.getOutput(data);
-//                    try {
-//                        setImageToView(resultUri);
-//                    } catch (FileNotFoundException e) {
-//                        e.printStackTrace();
-//                    }
-//                    // 既然已经设置图片，原先应该删除
-//                    if (tempFile != null) {
-//                        tempFile.delete();
-//                    }
-//                }
-//            }
         }
 
+    }
+
+    private void uploadImagePath(String path) {
+
+        Toast.makeText(getActivity(),"path:"+path,Toast.LENGTH_SHORT).show();
+        MyUser user = MyUser.getCurrentUser(MyUser.class);
+        user.setImagePath(path);
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    Toast.makeText(getActivity(), "更新成功", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "修改失败:" + e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     // 裁剪
@@ -364,42 +335,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
             L.e("uri == null");
             return;
         }
-//        File outDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-//        if (!outDir.exists()) {
-//            outDir.mkdirs();
-//        }
-//        File outFile = new File(outDir, System.currentTimeMillis() + ".jpg");
-//        //裁剪后图片的绝对路径
-//
-//        Uri destinationUri = Uri.fromFile(outFile);
-//        L.d("裁剪成功");
-//
-//        UCrop.of(uri, destinationUri)
-//                .withAspectRatio(1, 1)
-//                .withMaxResultSize(20, 20)
-//                .start(getActivity());
-//
-//        Intent intent = new Intent("com.android.camera.action.CROP");
-//        // Todo: 增加 MIUI 适配
-//        intent.setDataAndType(uri, "image/*");
-//        // 设置裁剪
-//        intent.putExtra("crop", "true");
-//        // 裁剪宽高
-//        intent.putExtra("aspectX", 1);
-//        intent.putExtra("aspectY", 1);
-//        // 裁剪图片质量
-//        intent.putExtra("outputX", 20);
-//        intent.putExtra("outputY", 20);
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-//        // 发送数据
-//        intent.putExtra("return-data", true);
-//        L.d("裁剪成功");
-//        startActivityForResult(intent, RESULT_REQUEST_CODE );
 
-        if (uri == null) {
-            Log.i("tag", "The uri is not exist.");
-        }
-//        tempUri = uri;
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
@@ -424,8 +360,10 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     //裁剪后的地址
     public  String getPath() {
         //resize image to thumb
+        MyUser user = MyUser.getCurrentUser(MyUser.class);
+        String userImageName = user.getObjectId();
         if (mFile == null) {
-            mFile = Environment.getExternalStorageDirectory() + "/" +"wode/"+ "outtemp.png";
+            mFile = Environment.getExternalStorageDirectory() + "/" +"wode/"+ userImageName + "_avater.png";
         }
         return mFile;
     }

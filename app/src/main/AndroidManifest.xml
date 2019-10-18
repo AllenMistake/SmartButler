@@ -38,7 +38,8 @@
         <activity
             android:name=".ui.SettingActivity"
             android:label="@string/text_setting" /> <!-- 闪屏 -->
-        <activity android:name=".MainActivity" /> <!-- 引导页 -->
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan"/> <!-- 引导页 -->
         <activity
             android:name=".ui.GuideActivity"
             android:theme="@style/NoActivityFullscreen" /> <!-- 登录页 -->
