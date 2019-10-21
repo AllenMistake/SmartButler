@@ -23,4 +23,21 @@
     <string name="text_courier_number">单号</string>
     <string name="text_tost_empty">输入框不能为空</string>
     <string name="text_more_length">输入长度超出限制</string>
+    <string name="text_setting_title_1">语音播报</string>
+    <string name="text_setting_title_2">智能短信提醒</string>
+    <string name="text_setting_title_3">检测版本</string>
+    <string name="text_setting_title_4">扫一扫</string>
+    <string name="text_setting_title_5">二维码分享</string>
+    <string name="text_setting_title_6">我的位置</string>
+    <string name="text_setting_title_7">关于软件</string>
+    <string name="text_setting_content_1">开启之后与服务管家对讲语音播报</string>
+    <string name="text_setting_content_2">开启之后收到短信将弹框提示</string>
+    <string name="text_setting_content_3">检查是否有新版本提示下载</string>
+    <string name="text_setting_content_4">扫描二维码或者条形码</string>
+    <string name="text_setting_content_5">把自己分享给朋友吧</string>
+    <string name="text_setting_content_6">时刻掌握自身位置</string>
+    <string name="text_setting_content_7">www.imooc.com</string>
+    <string name="text_test_version">"检测版本: "</string>
+    <string name="text_input_phone">请输入号码</string>
+    <string name="text_query">查询</string>
 </resources>

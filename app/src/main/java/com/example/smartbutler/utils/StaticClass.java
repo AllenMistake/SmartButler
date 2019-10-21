@@ -26,4 +26,5 @@ public class StaticClass {
 
     // 图灵机器人
     public static final String CHAT_LIST_KEY = "6e4bd795e7774a9ab8cddf6a9e57349e";
+    public static final String PHONE_KEY = "b1fb44597a69c8a7b9ededae725a7109";
 }

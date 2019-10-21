@@ -44,6 +44,7 @@ import com.example.smartbutler.R;
 import com.example.smartbutler.entity.MyUser;
 import com.example.smartbutler.ui.CourierActivity;
 import com.example.smartbutler.ui.LoginActivity;
+import com.example.smartbutler.ui.PhoneActivity;
 import com.example.smartbutler.utils.L;
 import com.example.smartbutler.view.CustomDialog;
 
@@ -80,8 +81,11 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private Button btn_picture;
     private Button btn_cancel;
 
+    // 快递查询
     private TextView tv_courier;
 
+    // 归属地查询
+    private TextView tv_phone;
 
 
     private  String mFile;
@@ -103,6 +107,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
         tv_courier = view.findViewById(R.id.tv_courier);
         tv_courier.setOnClickListener(this);
+
+        tv_phone = view.findViewById(R.id.tv_phone);
+        tv_phone.setOnClickListener(this);
 
         et_username = view.findViewById(R.id.et_username);
         et_sex = view.findViewById(R.id.et_sex);
@@ -232,10 +239,12 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.tv_courier:
                 startActivity(new Intent(getActivity(), CourierActivity.class));
+                break;
+            case R.id.tv_phone:
+                startActivity(new Intent(getActivity(), PhoneActivity.class));
         }
     }
 
-    public static final String PHOTO_IMAGE_FILE_NAME = "fileImage.jpg";
     public static final int CAMERA_REQUEST_CODE = 100;
     public static final int IMAGE_REQUEST_CODE = 101;
     public static final int RESULT_REQUEST_CODE = 102;

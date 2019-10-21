@@ -21,7 +21,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.CourierActivity"></activity>
+        <activity android:name=".ui.PhoneActivity"
+            android:label="归属地查询">
+        </activity>
+
+
+        <activity android:name=".ui.CourierActivity" />
         <activity android:name=".ui.ForgetPasswordActivity" /> <!-- 注册 -->
         <activity
             android:name=".ui.RegisteredActivity"
@@ -38,8 +43,9 @@
         <activity
             android:name=".ui.SettingActivity"
             android:label="@string/text_setting" /> <!-- 闪屏 -->
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan"/> <!-- 引导页 -->
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan" /> <!-- 引导页 -->
         <activity
             android:name=".ui.GuideActivity"
             android:theme="@style/NoActivityFullscreen" /> <!-- 登录页 -->
