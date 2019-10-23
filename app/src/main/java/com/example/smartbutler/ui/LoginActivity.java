@@ -48,11 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private CheckBox keep_password;
     private TextView tv_forget;
     private CustomDialog dialog;
-    private CircleImageView profile_image;
-    private  String mFile;
+    private ImageView iv_login_avatar;
 
-//    Bitmap downloadUserAvater = BitmapFactory.decodeFile(mFile);
-//    profile_image.setImageBitmap(downloadUserAvater);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,6 +73,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tv_forget = findViewById(R.id.tv_forget);
         tv_forget.setOnClickListener(this);
 
+        iv_login_avatar = findViewById(R.id.iv_login_avatar);
+
+
         //初始化dialog
         dialog = new CustomDialog(this, 0, 0, R.layout.dialog_loading, R.style.Theme_dialog, Gravity.CENTER, R.style.pop_anim_style);
         // 屏幕外点击无效
@@ -93,9 +93,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String name = et_name.getText().toString().trim();
         L.d(name);
 
-//        if (mFile == null) {
-//            mFile = Environment.getExternalStorageDirectory() + "/" +"wode/"+ userImageName + "_avater.png";
-//        }
+        String userAvatar = ShareUtils.getString(this, name, null);
+        Bitmap downloadUserAvater = BitmapFactory.decodeFile(userAvatar);
+        iv_login_avatar.setImageBitmap(downloadUserAvater);
     }
 
     @Override

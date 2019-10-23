@@ -46,6 +46,7 @@ import com.example.smartbutler.ui.CourierActivity;
 import com.example.smartbutler.ui.LoginActivity;
 import com.example.smartbutler.ui.PhoneActivity;
 import com.example.smartbutler.utils.L;
+import com.example.smartbutler.utils.ShareUtils;
 import com.example.smartbutler.view.CustomDialog;
 
 import java.io.File;
@@ -310,6 +311,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                         Bitmap photo =BitmapFactory.decodeFile(mFile);
                         profile_image.setImageBitmap(photo);
                         uploadImagePath(mFile);
+                        MyUser user = MyUser.getCurrentUser(MyUser.class);
+                        ShareUtils.putString(getActivity(), user.getUsername(), mFile);
                     } else {
                         Log.e("data","data为空");
                     }
