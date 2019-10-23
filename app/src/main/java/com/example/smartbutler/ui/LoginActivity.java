@@ -9,13 +9,17 @@ package com.example.smartbutler.ui;
  */
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +29,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.smartbutler.MainActivity;
 import com.example.smartbutler.R;
 import com.example.smartbutler.entity.MyUser;
+import com.example.smartbutler.utils.L;
 import com.example.smartbutler.utils.ShareUtils;
 import com.example.smartbutler.view.CustomDialog;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,6 +48,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private CheckBox keep_password;
     private TextView tv_forget;
     private CustomDialog dialog;
+    private CircleImageView profile_image;
+    private  String mFile;
+
+//    Bitmap downloadUserAvater = BitmapFactory.decodeFile(mFile);
+//    profile_image.setImageBitmap(downloadUserAvater);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,6 +89,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             et_name.setText(ShareUtils.getString(this, "name", ""));
             et_password.setText(ShareUtils.getString(this, "password", ""));
         }
+
+        String name = et_name.getText().toString().trim();
+        L.d(name);
+
+//        if (mFile == null) {
+//            mFile = Environment.getExternalStorageDirectory() + "/" +"wode/"+ userImageName + "_avater.png";
+//        }
     }
 
     @Override

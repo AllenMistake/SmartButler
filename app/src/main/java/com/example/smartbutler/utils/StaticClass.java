@@ -31,4 +31,7 @@ public class StaticClass {
 
     // 微信精选
     public static final String WECHAT_KEY = "76700fdd7f9a85834efc4bc1bc47d902";
+
+    // 妹子
+    public static final String GIRL_KEY = "http://gank.io/api/data/福利/50/1";
 }

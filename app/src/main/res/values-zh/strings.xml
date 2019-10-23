@@ -40,4 +40,5 @@
     <string name="text_test_version">"检测版本: "</string>
     <string name="text_input_phone">请输入号码</string>
     <string name="text_query">查询</string>
+    <string name="text_welfare">福利</string>
 </resources>

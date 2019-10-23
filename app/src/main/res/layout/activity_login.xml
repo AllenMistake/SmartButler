@@ -8,6 +8,7 @@
     android:background="@drawable/bg_house">
 
     <ImageView
+        android:id="@+id/iv_login_avatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher" />
